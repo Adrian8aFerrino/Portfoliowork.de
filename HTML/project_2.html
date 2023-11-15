@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+    <text y=%22.9em%22 font-size=%2290%22>🐸</text></svg>">
+    <meta name="description" content="Employee scheduling and retention analysis" />
+    <meta name="author" content="Adrián Ochoa Ferriño" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,400&display=swap" rel="stylesheet" >
+    <title>Project 2: Workforce management in Retail</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+<py-config>
+    packages = ["numpy", "pandas", "scipy", "seaborn"]
+    [[fetch]]
+    from = 'databases/'
+    files = ['corr_matrix_v2.csv']
+</py-config>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="homepage_neu.html#about">Startseite</a></li>
+        <li><a class="active" href="homepage_neu.html#project-showcase">Projekt-Schaufenster</a></li>
+        <li><a href="projects_neu.html#project-future">Zukünftige Projekte</a></li>
+        <li><a href="contact_neu.html#contact">Kontaktinformationen</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+<section id="homepage">
+  <h1>Personalmanagement im Einzelhandel:</h1>
+  <h2>Anwendung der Personaleinsatzplanung und Retention-analyse des Personals in mehreren Convenience-Stores innerhalb
+      einer Stadt. Wie statistische Analyse- und Datenvisualisierungstechniken dabei helfen können, die
+      Mitarbeiterbindung vorherzusagen und Faktoren zu identifizieren, die zur Mitarbeiterfluktuation beitragen.</h2>
+    <div class="project-container">
+        <h3> The BIG QUIT in the retail industry has prompted companies to look for better solutions for both the
+            business and their employees. With traditional planning methods, managers are forced to rely on their
+            intuition and experience as a way to determine when and how to allocate their resources.
+            <br><br>
+            Which leads to retail companies being forced to develop measures to optimize their workforce management by
+            analyzing employee scheduling, availability, and performance data. This in turn helps companies reduce
+            labor costs, improve employee retention, and improve customer service.
+            <br><br> These types of projects are called <b>Workforce management (WFM)</b> and are focused on managing
+            and optimizing the workforce to meet business needs and customer demand while minimizing labor costs.
+            <br><br>
+            Thanks to the digitization in the retail industry, complex operations such as employee scheduling and
+            retention analysis can be optimized through the application of data analysis and machine learning
+            algorithms.
+        </h3>
+
+        <h3>The <b>CRISP-DM</b> methodology is an incredibly useful framework that data scientists use to guide their
+            projects identify the problem, comply with business and technical constraints, tackle complex data problems
+            and evaluate the results. As by gaining a clear understanding of the retail industry through the first step
+            of CRISP-DM, you will be able to convert the needs, requirements and goals into key factors that need to be
+            considered when creating and using viable data.
+            <br><br>
+            Through data analytics, one can identify patterns in data commonly found in a retail store, while machine
+            learning handles the adaptive integration of algorithms and models, which helps management adjust their
+            schedules in real time. This instant response ensures employees are deployed where they are needed most,
+            reducing downtime and improving overall efficiency, with a simultaneous positive effect on employee
+            retention.
+            <br><br>
+            This project addresses two objectives, namely: <b>Employee planning</b> and <b>Retention analysis</b> by
+            using simulated data that might be found in a typical retail environment (As a result, all the data
+            presented in this project is simulated and is not representative of real-world data).
+        </h3>
+
+        <h3><b>STEP 1: Business Understanding</b><br><br>
+            <b>I. Employee scheduling:<br></b> Data-driven schedules ensure adequate staffing to cover all required
+            tasks regardless of workload changes, taking into account employee preferences and availability, while at
+            the same time maximizing the  productivity of the business. Which in turn influences that the right employee
+            is always available at the right time.
+            <br><br>
+            <b>II. Retention analysis:<br></b> Employee retention is a critical issue within the retail industry, as it
+            helps in identifying factors that contribute to employee turnover and develop strategies to reduce turnover
+            and improve employee retention.
+            <br><br>
+            For <b>Key Performance Indicators (KPI)</b> we'll take into consideration turnover vs retention rates and
+            assumed costs related to overstaffing and understaffing.
+        </h3>
+
+        <h3><b>STEP 2: Data Understanding</b><br><br>
+            This project will take into account the facts and statistics collected from 8 Convenience stores throughout
+            the years of 2015-2023, but before engaging in the data-driven schedules, you would first need to ensure
+            that the targeted data is relevant to the problem.
+            <br><br>Data understanding is focused on covering all activities that may be involved with the problem, as
+            a mechanism to construct the final dataset from all the available raw data. As this step is carried out by
+            mostly focusing on collecting data, examining the data and evaluating the quality of the data.
+            <br><br><b>NOTE:</b> Within this project we won't consider any data quality issues like anomalies or even
+            missing data as all data is generated specifically for this project.
+            <br><br>This project is built on the following available data sources which are obtained from 8 different
+            convenience stores. For the most part, all scheduling optimization and retention analysis problems are
+            influenced by the following 2 elements:
+        </h3>
+
+        <img src="bilder/project_zwei1.png" alt="Project dataset 1">
+
+        <h3>1. Staff information: These characteristics vary depending on every employee and include the following data:
+            <br>+ ID nummer<br>+ Schichtverfügbarkeit<br>+ Qualifikationen<br>+ Überstunden (Verfügbarkeit)<br>
+            + Schichtpräferenz<br>+ Einstellungsdatum<br>+ Entlassungsdatum<br>+ Gemischtwarenladen
+            <br><br><b>NOTE:</b> Staff information serve in understanding retention, as well as managing employee
+            preferences and availability for employee scheduling.
+        </h3>
+
+        <h3>2. Store elements: These elements are always fluctuating and represent every action that happens within the
+            store.<br>+ Datum<br>+ Gemischtwarenladen<br>+ Feiertag<br>+ Große Sonderaktionen<br>+ Kundenfrequenz<br>+
+            Beleggröße<br>+ Produktverkäufe
+            <br><br><b>NOTE:</b> Store elements serve in understanding variation within the 8 convenience stores and
+            how the different elements like store demand might influence staffing levels, and retention rates.
+        </h3>
+
+        <img src="bilder/project_zwei2.png" alt="Project dataset 2">
+
+        <h3><b>STEP 3: Data Preparation</b><br><br>
+            Data preparation essentially involves the process of adjusting the information extracted from the previous
+            step, and transforming that data for easier manipulation and a more concise arrangement of information to
+            identify aspects of the information such as variable names, data types, missing values, and even data
+            distributions.
+            <br><br>Data types play a crucial role in data preparation and data exploration as they are used as a means
+            of performing specific operations depending on the specified format. In the case for the staff dataframe,
+            we are handling a number of variables that are initially read in an incorrect datatype, which misrepresents
+            the variable and doesn't enable us to perform essential tasks for data transformation. For that cause, we
+            cast the data columns to their better representative datatypes.
+            <br><br><b>Transformed datatypes:</b>
+            <br>+ Überstunden (JA/NEIN) --> (True/False)
+            <br>+ Schichtpräferenz (JA/NEIN) --> (True/False)
+            <br>+ Einstellungsdatum (object) --> (datetime64[ns])
+            <br>+ Entlassungsdatum (object) --> (datetime64[ns])
+            <br>+ Gemischtwarenladen (int64) --> (object)
+        </h3>
+
+        <section class="sample_code">
+            <b># Python CODE: Data Preparation</b>
+            <br><br>import numpy as np
+            <br>import pandas as pd
+            <br><br>staff_df = pd.read_csv("/.../databases/staff_elements.csv", encoding='latin1', header=0)
+            <br><br>staff_df = staff_df.replace('k.A', np.nan)
+            <br><br>staff_df[['Überstunden', 'Schichtpräferenz']] = staff_df[['Überstunden', 'Schichtpräferenz']].replace({'JA': 1, 'NEIN': 0}).astype('bool')
+            <br><br>staff_df['Einstellungsdatum'] = pd.to_datetime(staff_df['Einstellungsdatum'], format='%d/%m/%Y')
+            <br><br>staff_df['Entlassungsdatum'] = pd.to_datetime(staff_df['Entlassungsdatum'], format='%d/%m/%Y')
+            <br><br>staff_df['Tage_zwischen'] = (staff_df['Entlassungsdatum'] - staff_df['Einstellungsdatum']).dt.days
+            <br><br>staff_df['Gemischtwarenladen'] = staff_df['Gemischtwarenladen'].astype(str)
+            <br><br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Personal data types:
+            <br>ID Nummer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object
+            <br>Vorname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object
+            <br>Nachname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object
+            <br>Schichtverfügbarkeit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object
+            <br>Qualifikationen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object
+            <br>Überstunden&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object --> bool
+            <br>Schichtpräferenz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object --> bool
+            <br>Einstellungsdatum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object --> datetime64[ns]
+            <br>Entlassungsdatum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object --> datetime64[ns]
+            <br>Gemischtwarenladen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int64&nbsp;&nbsp; --> object
+            <br>Tage_zwischen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float64
+            <br>dtype: object
+        </section>
+
+        <img src="bilder/project_zwei3.png" alt="Project Karte">
+
+        <h3>Before moving to the next step, let's consider the following aspects of the data that will influence the
+            structuring of data exploration.
+            <br>--> 8 different convenience stores
+            <br>--> 87 months of historical data
+            <br>--> 3 types of jobs positions
+            <br>--> 2 types of work shifts
+            <br>--> 3 types of jobs positions
+            <br>--> 1500 staff IDs with issue and dismissal dates
+        </h3>
+
+        <h3><b>STEP 4: Data Exploration and Visualization</b><br><br>
+            The first step in data analysis begins after data preparation, once all data is malleable. The main goal
+            of data exploration is to: 1. Understand what is contained in a dataset, 2. Identify its properties, 3.
+            Find possible relationships between data elements and 5. Discover anomalies or patterns. All by virtue of
+            the generation of "metadata".
+            <br><br>Metadata aims to create a mental model as a mechanism to understand the data not via it's content
+            but through the information it contains, such as: <b>Descriptive, structural, reference and statistical
+            metadata</b>.
+            <br><br>For the most part, descriptive analytics helps us determine the characteristics of a data set
+            through 3 different measures:
+            <br>1. Central tendency
+            <br>2. Variability
+            <br>3. Frequency of distribution.
+        </h3>
+
+        <section class="sample_code">
+            Python offers the <b>describe()</b> function for the main central tendency measures and even some
+            measures of variability after being able to customize the following measures:
+            <br><br>+ <b>Skewness:</b> which measures the degree of asymmetry in a distribution. (Closer to zero means
+            perfect symmetric distribution.
+            <br><br>+ <b>Kurtosis:</b> which measures the resemblance to a normal distribution. (Closer to 0 means
+            follows a normal distribution.<br><br>+ <b>Jarque-Bara test:</b> is a hypothesis test that handles both
+            skewness and kurtosis in order to test the hypothesis that the data are from a normal distribution.
+            <br><br>Deskriptive Analyse Vergleich der Beleggröße mit und ohne Ausreißer:
+            <br>count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23856.00 ---- 19808.00
+            <br>mean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21.71 ---- 26.15
+            <br>std&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12.64 ---- 8.73
+            <br>min&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.00 ---- 0.64
+            <br>25%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14.53 ---- 20.6
+            <br>50%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23.95 ---- 25.88
+            <br>75%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30.15 ---- 31.55
+            <br>max&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60.44 ---- 60.44
+            <br>skew&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-0.35 ---- 0.20
+            <br>kurt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-0.54  ---- 0.12
+            <br>jarque-bera (p-value) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0000 ---- 0.0000
+            <br>Name: Beleggröße, dtype: float64
+            <br><br> Ergebnisse belegen, dass die Verteilung der Beleggröße einer Normalverteilung folgt.
+        </section>
+
+        <h3><b>TESTS FOR NORMATIVE DATA</b><br>
+            The normal distribution is a continuous probability distribution that is symmetric about its mean,
+            most observations cluster around the central peak, and the probabilities for values farther from the mean
+            decrease equally in both directions. Extreme values at both ends of the distribution are similarly unlikely.
+            <br><br>The main focus of descriptive analytics is to prove normative distributions through measures of
+            variability, and frequency of distribution. In order to gain the capability of applying standardization,
+            which allows you to compare observations and calculate probabilities across different populations, without the
+            need of applying transformation techniques.
+            <br><br>Most statistical hypothesis tests assume that the data follows a bell, which isn't the case in most
+            analyzed databases. Which is why transformation techniques are important to get close to normative
+            distributions.
+        </h3>
+
+        <h3><b>NOTE:</b> When working with Linear Models, such as: LDA, Gaussian Naive Bayes, Logistic
+            Regression, Linear Regression, etc., you should first measure the data distribution and ensure that all
+            data handled within the model follows something close to a normal distribution, as all of them are
+            explicitly calculated from the assumption that the distribution is a bivariate or multivariate normal.
+            <br><br>Another benefit of normative distributions is the ability of calculating and handling outliers in a
+            distribution. Which is important as handling outliers changes the values of the descriptive metrics such as
+            in the following example:
+        </h3>
+
+        <img src="bilder/project_zwei4.png" alt="Project Grafik 1">
+
+        <h3><b>DATA VISUALIZATION</b><br>
+            Thanks to data visualization, many statistical tests that can be easily scrapped depending on how the data
+            looks through different types graphs and charts. For example, a great way to determine the distributions of
+            data is through visual displays that organise and present frequency counts so that the information can be
+            interpreted more easily.
+            <br><br>
+            In the previous bar charts, we can identify the different distributions of overall store sales, customer
+            frequency, receipt size, and retention days of all employees.
+        </h3>
+
+        <img src="bilder/project_zwei5.png" alt="Project Grafik 2">
+
+        <h3>When talking about categorical data it is important to consider class imbalance, as within statistics,
+            having an under-representation of multiple class variables will result in a decrease in accuracy for both
+            classification and regression models. Another aspect of overrepresented or underrepresented classes in a
+            sample, is that it may lead to bias in the results.
+            <br><br>For the case of staff data, we can identify the sample sizes for the main categorical data that
+            will influence retention, in this case the sample sizes for almost all categorical data is closely equal.
+            That is important since equal sample sizes help to ensure that any observed differences between categories
+            are not simply due to chance, making it easier to determine whether any observed differences are
+            statistically significant instead of simply due to the randomness of the sampling process.
+        </h3>
+
+        <section class="sample_code">
+            <div id="heatmap"></div>
+            <py-script output="heatmap">
+                import numpy as np
+                import pandas as pd
+                import seaborn as sns
+                import matplotlib.pyplot as plt
+
+                df = pd.read_csv('corr_matrix_v2.csv', header=0, index_col=0)
+                ax = sns.heatmap(df, annot=False, cmap="Oranges")
+                plt.title("Pearson correlation (Personal)")
+                plt.show()
+                display(plt)
+            </py-script>
+        </section>
+
+        <h3>Another aspect of data exploration and visualization is: <b>Correlation tests</b>, which help in
+            determining what types of relationships are present between two variables. (Example: Pearson (linear
+            relationship between two variables).
+            <br><br>
+            For the case of <b>retention analysis</b>, a HUGE component that has to be taken into consideration is the
+            time between the issue and dismissal dates of every employee that has worked in a convenience store during
+            the past 87 months (Duration of employment) and what are the variables that influence it.
+            <br><br>
+            According to the Pearson Correlation Matrix, the most relevant variables to retention are:
+            <br><b>Schichtpräferenz &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;55.5059%</b>
+            <br><b>(Qualifikationen) Reinigungskraft &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-41.5935%</b>
+            <br><b>(Qualifikationen) Verkäufer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21.7596%</b>
+        </h3>
+
+        <h3>For our -<b>RETENTION ANALYSIS PROBLEM</b>- we'll have to develop and train a predictive model that
+            considers the factors that contribute to employee turnover. But before that we'll need to analyze other
+            statistical properties for a predictive model like seasonality.
+            <br><br>
+            Seasonality tests looks for periodic fluctuations within historical data or cycles that occur regularly
+            based on a particular season. A season could be associated to a calendar season (summer or winter), or it may
+            refer to a holiday season.
+        </h3>
+
+        <img src="bilder/project_zwei6.png" alt="Project Grafik 3">
+
+        <h3>Let's compare these two different historical data: "Sales data" and "Employment days". As we can see with
+            sales data, seasons are clearly defined when we compare all the 87 months of historical data.
+            <br><br>
+            On the other hand, by comparing employment days historically we can easily determine that it doesn't follow
+            any type of seasonality, which means there isn't any need for seasonality tests as it's clear that we can't
+            predict staffing through understanding seasonality.
+        </h3>
+
+        <img src="bilder/project_zwei7.png" alt="Project Grafik 4">
+
+        <h3><b>STEP 5: Feature Engineering</b><br><br>
+            In order to proceed with the next step, we must prepare the data by transforming it for further analysis.
+            This may involve tasks such as normalizing or standardizing variables, creating new variables based on
+            existing ones, or reducing the dimensionality of the data. By doing so, we can improve considerably the
+            performance of our models.
+            <br><br>
+            Another angle for feature engineering is the ability to create dummy variables in order to represent
+            categorical data into a numerical form that will later be used to estimate the effect of each category on
+            the response variable, by comparing their estimated coefficients.
+            <br><br>
+            For the retention analysis regression model, we'll use the staff information with all the dummy variables
+            generated from the categorical values of: Qualifications, Shift preference, Shift availability and their
+            availability for doing overtime.
+        </h3>
+
+        <section class="sample_code">
+            Within our -<b>EMPLOYEE SCHEDULING PROBLEM</b>- we need to employ an optimization model that is able to not
+            only interpret our employee availability by convenience store, but also be able to correctly identify
+            employee availability by shift, role and date. Which is why it's important for us to apply feature
+            engineering on the 'Einstellungsdatum' & 'Einstellungsdatum'.
+            <br><br>
+            In order to convert the duration of employment of an employee into a range of dates that represent the
+            availability of an employee for the scheduling model we'll have to configure the following code in order to
+            represent the Employee's availability in the following format:
+            <br><br><br>
+            <b># Python CODE: FEATURE ENGINEERING
+            <br>These lines of code generate hundreds of columns of binary values between the dates of 2015 and 2023 as
+            a way of representing the availability of employees during the periods.</b>
+            <br>staff_df['date_range'] = staff_df.apply(lambda row: pd.date_range(start=row['Einstellungsdatum'],
+                                                                  end=row['Entlassungsdatum'], freq='D'), axis=1)
+            <br><br>for date in pd.date_range(start="01/01/2015", end="31/03/2023", freq='D'):
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;staff_df[date.strftime('%d.%m.%Y')] = staff_df['date_range'].apply(
+            lambda x: 1 if date in x else 0)
+            <br><br>staff_df.drop('date_range', axis=1, inplace=True)
+            <br><br><b>These following lines of code drops all dates that represent holidays and sundays where the
+            stores are supposed to be closed and don't require staff.</b>
+            <br>date_filter = store_df[store_df.Datum.dt.weekday == 6]
+            <br>date_filter = date_filter[date_filter["Feiertag"] != 1]
+            <br>date_list = list(date_filter["Datum"])
+            <br>date_list_str = [date.strftime('%Y-%m-%d %H:%M:%S') for date in date_list]
+            <br>date_list = [datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S').strftime('%d.%m.%Y') for date in
+            date_list_str]
+        </section>
+
+        <img src="bilder/project_zwei8.png" alt="Project dataset 3">
+
+        <h3><b>STEP 6: Model Building and Training</b><br><br>
+            Finally the main objective for the project revolves around model building and training. Within this project
+            we will develop two different types of model types: Optimization model for Employee Scheduling and
+            Logistic Regression Model for Retention Analysis.
+            <br><br>
+            Starting with the <b>Employee scheduling</b> model, we'll use the PuLP Python library which provides a
+            flexible modeling framework which allows us to define the linear programming problem, the decision
+            variables, the objective function and its constraints in order to solve the complex workforce scheduling
+            problems.
+        </h3>
+
+        <h3>Linear programming is a mathematical modeling technique that considers a set of input constraints within
+            quantitative decision making in employee scheduling. In the case for this employee scheduling problem we
+            consider the following constraints:<br>1. Shift preferences<br>2. Role in the convenience store<br>3.
+            Maximum number of consecutive days that the employee is working
+            <br><br>
+            Translating the decision variables that we've been obtaining through the steps of "Data Understanding",
+            "Data Preparation", "Data Exploration" and "Feature Engineering" leaves us with the following labels: <br>
+            <b>a</b> for Personal<br><b>b</b> for Schichtverfugbarkeit<br><b>c</b> for Datum.<br><b>d</b> for
+            Qualifikationen.
+        </h3>
+
+        <section class="sample_code">
+            <b># Python CODE: MODEL BUILDING (Employee Scheduling)</b>
+            <br>opt_prob = plp.LpProblem("Employee Scheduling", plp.LpMinimize)
+            <br>personal = staff_df['ID Nummer'].tolist()
+            <br>schichtverfugbarkeit = staff_df['Schichtverfügbarkeit'].unique().tolist()
+            <br>qualifikationen = staff_df['Qualifikationen'].unique().tolist()
+            <br>datum = datumsbereich.strftime('%d.%m.%Y').tolist()
+            <br>datum = [x for x in datum if x not in date_list]
+            <br><br>x = plp.LpVariable.dicts("x", [(a, b, c) for a in personal for b in schichtverfugbarkeit for c in
+            datum], cat='Binary')
+            <br>opt_prob += plp.lpSum([x[(a, b, c)] for a in personal for b in schichtverfugbarkeit for c in datum])
+            <br>for c in datum:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for b in schichtverfugbarkeit:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opt_prob += plp.lpSum([x[(a, b, c)] for a in personal]) >= staff_df[staff_df[
+            'Schichtverfügbarkeit'] == b][d].sum()
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for d in qualifikationen:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opt_prob += plp.lpSum([x[(a, c, c)] for a in personal if staff_df.loc[staff_df
+            ['ID Nummer'] == a, 'Qualifikationen'].item() == d]) >= \
+                        staff_df[(staff_df['Schichtverfügbarkeit'] == b) & (staff_df[c] == 1) &
+                             (staff_df['Qualifikationen'] == d)][c].sum()
+            <br><br>for a in personal:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i in range(len(datum) - 4):
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opt_prob += plp.lpSum([x[(a, b, datum[j])] for j in range(i, i + 5) for b in
+            schichtverfugbarkeit]) <= 5
+            <br>opt_prob.solve()
+        </section>
+
+        <h3>The objective function is to Minimize the total number of staff assigned to shifts, represented as the sum
+            of all decision variables x[(a, b, c)].
+            <br><b>prob = Minimize ∑(x[a,b,c])</b> for all a, b, c
+            <br><br>subject to: <b>x[a,b,c] ∈ {0,1}</b> for all a, b, c
+            <br><br><b>∑(x[a,b,c])</b> for all a in personal >= staff_df[b][c] for all b in schichtverfügbarkeit, c in
+            datum
+            <br><br><b>∑(x[a,b,c])</b> for all a in personal with qualification <b>r >= staff_df[(b=b) & (c=1) &
+                (d=d)][c]</b> for all s in schichtverfügbarkeit, d in Qualifikationen, c in datum
+            <br><br><b>∑(x[a,b,c])</b> for all a in personal, b in schichtverfügbarkeit, and c in the five consecutive
+            days starting from day i <= 5
+        </h3>
+
+        <video id="video" controls autoplay loop muted>
+            <source src="videos/project_zwei.mp4" type="video/mp4">
+        </video>
+
+        <h3>The mathematical model takes into account the following constraints:
+            The <b>first constraint</b> ensures that the number of employees assigned to a shift on a particular date
+            is at least equal to the number of employees required for that shift and date according to the staff
+            availability dataframe.
+            <br><br>The <b>second constraint</b> ensures that the number of employees with a particular qualification
+            assigned to a shift on a particular date is at least equal to the number of employees required for that
+            shift and date according to the staff availability dataframe and that have the required qualification.
+            <br><br>The <b>third constraint</b> ensures that no more than five consecutive shifts are assigned to any
+            employee.
+            <br><br>The <b>final constraint</b> ensures that the decision variable x[(a, b, c)] takes only binary
+            values, where 0 means staff a is not assigned to shift b on day c, and 1 means staff a is assigned to shift
+            b on day c.
+        </h3>
+
+        <h3>Now that the Employee scheduling model is running without any issue, it's time to start with the logistic
+            regression model built for the <b>Retention analysis</b> problem, which is used to identify the factors
+            that are associated with employee retention and help predict the likelihood of an employee leaving an
+            organization.
+            <br><br>
+            The logistic regression model will estimate the probability of an employee leaving the organization based
+            on the values of the independent variables. The model will also provide information on the strength and
+            direction of the relationship between each independent variable and employee retention.
+            <br><br>
+            By using the <b>Statsmodels</b> Python module, we are able to run the statistical function for logistic
+            regression -<b>Logit()</b>- and perform statistical tests.
+        </h3>
+
+        <section class="sample_code">
+            <b># Python CODE: MODEL BUILDING (Retention analysis)</b>
+            <br>import statsmodels.api as sm
+            <br>import pandas as pd
+            <br><br>dumm_eins = pd.get_dummies(staff_df["Schichtverfügbarkeit"], prefix="Schichtverfügbarkeit")
+            <br>dumm_zwei = pd.get_dummies(staff_df["Qualifikationen"], prefix="Qualifikationen")
+            <br>dumm_drei = pd.get_dummies(staff_df["Gemischtwarenladen"], prefix="Gemischtwarenladen")
+            <br><br>df_logit = pd.concat([staff_df, dumm_eins, dumm_zwei, dumm_drei], axis=1)
+            <br><br>predictors = ["Überstunden", "Schichtpräferenz", "Schichtverfügbarkeit_Morgenschicht",
+              "Schichtverfügbarkeit_Nachmittagsschicht", "Qualifikationen_Aushilfe", "Qualifikationen_Reinigungskraft",
+              "Qualifikationen_Verkäufer", "Gemischtwarenladen_1", "Gemischtwarenladen_2", "Gemischtwarenladen_3",
+              "Gemischtwarenladen_4", "Gemischtwarenladen_5", "Gemischtwarenladen_6", "Gemischtwarenladen_7",
+              "Gemischtwarenladen_8"]
+            <br><br>mean_resp = df_logit["Tage_zwischen"].mean()
+            <br>df_logit["response"] = (df_logit["Tage_zwischen"] < mean_resp).astype(int)
+            <br>response = ["response"]
+            <br><br>X_train, X_test, y_train, y_test = train_test_split(df_logit[predictors], df_logit[response], train_size=0.8,
+                                                    random_state=0)
+            <br>model = sm.Logit(y_train, X_train).fit()
+            <br>y_pred = model.predict(X_test)
+            <br>y_pred = np.round(y_pred)
+            <br><br>accuracy = accuracy_score(y_test, y_pred)
+            <br>precision = precision_score(y_test, y_pred)
+            <br>recall = recall_score(y_test, y_pred)
+            <br>f1 = f1_score(y_test, y_pred)
+        </section>
+
+        <h3><b>STEP 7: Model Evaluation and Comparison</b><br><br>
+            Thanks to the preparation and transformation of data during the past steps we can, through the process of
+            <b>Model evaluation</b>, we were able to obtain the following performance metrics for each model:
+            <br><br><b>OPTIMIZATION MODEL:</b>
+            <br>With the results obtained from the optimization model <b>(Status: Optimal)</b> we can see that the
+            adjustment of schedules within the available resources is possible if there is a minimum of demand for
+            personnel (1 for each role).
+            <br><br>
+            In this case, the employee scheduling model is able to manage which employees would be available for each
+            day and shift in every store while at the same time ensuring that the constraints are met.
+            <br><br>These results prove that the number of employees available during each period of time is enough to
+            support the operation of all the stores within the city for a total of 87 months (excluding holidays and
+            sundays).
+        </h3>
+
+        <h3><b>LOGISTIC REGRESSION MODEL:</b>
+            <br>Using the results of the logistic regression model, we can identify which variables have the greatest
+            impact on retention, since we are not simply predicting whether an employee will leave the store within a
+            given time period, but rather estimate the likelihood that he/she will leave the store will leave the
+            company.
+            <br><br>The output of a logistic regression model includes a summary of the model's coefficients and other
+            statistics that can be used to assess the model's performance and interpret its results. The main
+            statistics for logistic regression are: Coefficients (coef) and p-values (P>|z|), where:
+        </h3>
+
+        <img src="bilder/project_zwei9.png" alt="Project screenshot">
+
+        <h3>A positive coefficient indicates that an increase in the corresponding predictor variable is associated
+            with an increase in the log-odds of the response variable, while a negative coefficient indicates the
+            opposite. (Which means that <b>Schichtpräferenz</b> and <b>Überstunden</b> cause a considerable decrease in
+            the predictor variable, while <b>"Qualifikationen_Reinigungskraft"</b> causes an increase)
+            <br><br>The p-value associated with each coefficient indicates whether the coefficient is statistically
+            significant, with smaller p-values indicating greater significance. (Which means that variables such as
+            <b>Schichtverfügbarkeit</b> have no statistical significance)
+        </h3>
+
+        <section class="sample_code">
+            <b># Python Output for Optimization model:</b>
+            <br>Welcome to the CBC MILP Solver
+            <br>Version: 2.10.3
+            <br>Build Date: Dec 15 2019
+            <br>Result - Optimal solution found
+            <br>End time:  996.1563172340393
+            <br>Status: Optimal
+            <br>Total Cost = 33263.0
+            <br><br><br>
+            <b># Python Output for Regression model:</b>
+            <br>Optimization terminated successfully.
+            <br>Current function value: 0.425496
+            <br>Iterations 11
+            <br>Accuracy: 0.79
+            <br>Precision: 0.8841463414634146
+            <br>Recall: 0.7671957671957672
+            <br>F1 Score: 0.8215297450424929
+        </section>
+
+        <h3><b>STEP 8: Model Refinement</b><br><br>
+            For the case of an <b>OPTIMIZATION MODEL</b>, the best way to refine it is by looking within linear
+            programming. As linear assumptions usually are approximations to an optimized solution which is where
+            <b>Sensitivity analysis</b> comes into action as a way to systematically examine how sensitive the
+            solution of a model is to small changes to the data, the constraints or even the objective function, as a
+            way to obtain an answer that is closer to what is required in an employee scheduling model.
+            <br><br>
+            On the other hand, a <b>LOGISTIC REGRESSION MODEL</b> can be refined using ensemble techniques such as
+            bagging, boosting, and stacking. These techniques basically combine the predictions of multiple models as a
+            way to leverage the strengths of different models which can help in identifying areas for improvement and
+            determine the overall effectiveness of each model beyond the use of evaluating metrics.
+        </h3>
+
+        <h3><b>CONCLUSION:</b><br>
+            Our data analysis project has successfully ended in two models that have significant practical
+            applications in employee management. The employee scheduling optimization model enables the creation of a
+            defined schedule that can be adjusted to the specific needs of managers and employees, resulting in
+            increased productivity and job satisfaction.
+            <br><br>On the other hand, the logistic regression model for retention analysis accurately identifies which
+            types of elements within the environment have an influence on employee tenure and enables actions to retain
+            employees who are about to leave through retention programs since the results show that the main reason for
+            short retention, is when an employee is forced them to work on a shift that is not preferred. Therefore,
+            providing flexibility in scheduling options could significantly reduce employee turnover rates and improve
+            overall employee satisfaction.
+            <br><br>In short, our data analysis project has demonstrated the value of data-driven decision-making in
+            employee management. By using these models, companies can optimize scheduling, improve employee retention
+            rates, and create a more positive work environment for their employees.
+        </h3>
+    </div>
+</section>
+
+  <footer>
+    <p>Erstellt von Adrián Ochoa Ferriño - 2023</p>
+  </footer>
+
+</body>
+
+<body style="background-color:#E1E6E1;"></body>
+
+<style>
+  .project-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 40fr 45fr;
+    grid-gap: 50px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 1440px) {
+  .project-container {
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+  .project-container img {
+    width: 672px;
+    height: 378px;
+    margin-right: 20px;
+    border-radius: 30px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .project-container video {
+    width: 672px;
+    height: 378px;
+    margin-right: 20px;
+    border-radius: 30px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .project-container p {
+    text-align: justify;
+    width: 30%;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #EB6534;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
+
+  nav {
+    background-color: #232020;
+    display: flex;
+    height: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    overflow: hidden;
+    position: fixed;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    color: #E1E6E1;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+  }
+
+  nav a:hover {
+    background-color: #F24236;
+    color: #232020;
+  }
+
+  nav a.active {
+    background-color: #FF6A33;
+    color: #E1E6E1;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  footer {
+    background-color: #232020;
+    color: #E1E6E1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+  }
+
+  footer p {
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+    font-weight: bold;
+
+  }
+
+  h2 {
+    font-size: 28px;
+    margin: 20px 0;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 24px;
+    margin: 20px 0;
+    font-weight: normal;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 10px 0;
+    font-weight: normal;
+  }
+
+  .sample_code {
+    background-color: #282c34;
+    color: #fff;
+    padding: 20px;
+    overflow: auto;
+  }
+
+  .sample_code pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: "Consolas", "Courier New", monospace;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .btn {
+    background-color: #EB6534;
+    color: #232020;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .btn:hover {
+    background-color: #F24236;
+    color: #232020;
+  }
+
+  #content {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			background-color: white;
+			border: 1px solid black;
+			padding: 20px;
+  }
+</style>
+</html>

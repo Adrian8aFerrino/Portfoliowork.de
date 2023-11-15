@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+    <text y=%22.9em%22 font-size=%2290%22>🐸</text></svg>">
+    <meta name="description" content="Contact information" />
+    <meta name="author" content="Adrián Ochoa Ferriño" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,400&display=swap" rel="stylesheet" >
+    <title>Kontaktinformationen</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="homepage_neu.html">Startseite</a></li>
+        <li><a href="homepage_neu.html#project-showcase">Projekt-Schaufenster</a></li>
+        <li><a href="projects_neu.html#project-future">Zukünftige Projekte</a></li>
+        <li><a class="active" href="contact_neu.html#contact">Kontaktinformationen</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+<section id="contact">
+  <h1>Kontaktinformationen:</h1>
+  <h2><br>Wenn Sie Fragen oder Anmerkungen haben, zögern Sie bitte nicht, mich über die unten stehenden
+      Kontaktinformationen zu kontaktieren: </h2>
+    <div class="contact-container">
+        <div class="logos">
+            <h2> LinkedIn Profil
+                <a href="https://www.linkedin.com/in/adri%C3%A1n-ochoa-ferri%C3%B1o-520a5918b/?locale=de_DE" target="_blank">
+                <img src="bilder/linkedin_logo.png" alt="LinkedIn Logo" class="logo"></a>
+                <br>
+            </h2>
+
+            <h2> Gmail: ochoa.ferrigno@gmail.com
+                <a href="mailto:ochoa.ferrigno@gmail.com">
+                <img src="bilder/gmail_logo.png" alt="Gmail Logo" class="logo"></a>
+            </h2>
+        </div>
+    </div>
+    <h3><br><br>Wenn Sie an einer Zusammenarbeit mit mir interessiert sind oder einen Vorschlag für ein Projekt haben,
+        zögern Sie bitte nicht, mich zu kontaktieren! Ich bin immer auf der Suche nach neuen Möglichkeiten, mit anderen
+        zusammenzuarbeiten, und würde mich gerne darüber unterhalten, wie ich Ihnen bei Ihren Programmieranforderungen
+        helfen kann. Jede Art von Feedback wäre willkommen.</h3>
+</section>
+
+
+  <footer>
+    <p>Erstellt von Adrián Ochoa Ferriño - 2023</p>
+  </footer>
+
+</body>
+
+<body style="background-color:#E1E6E1;"></body>
+
+<style>
+  .contact-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 50fr 50fr;
+    grid-gap: 0px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .contact-container img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    border-radius: 30px
+  }
+
+  .contact-container p {
+    text-align: justify;
+    width: 30%;
+  }
+
+  .logos {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .logo {
+    margin: 0 10px;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #EB6534;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
+
+  nav {
+    background-color: #232020;
+    display: flex;
+    height: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    overflow: hidden;
+    position: fixed;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    color: #E1E6E1;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+  }
+
+  nav a:hover {
+    background-color: #F24236;
+    color: #232020;
+  }
+
+  nav a.active {
+    background-color: #FF6A33;
+    color: #E1E6E1;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  footer {
+    background-color: #232020;
+    color: #E1E6E1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+  }
+
+  footer p {
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+    font-weight: bold;
+
+}
+
+  h2 {
+    font-size: 28px;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+  h3 {
+    font-size: 24px;
+    margin: 20px 0;
+    font-weight: normal;
+}
+
+  p {
+    font-size: 16px;
+    margin: 10px 0;
+    font-weight: normal;
+}
+
+</style>
+</html>

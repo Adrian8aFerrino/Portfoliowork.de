@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+    <text y=%22.9em%22 font-size=%2290%22>🐸</text></svg>">
+    <meta name="description" content="Queuing Model" />
+    <meta name="author" content="Adrián Ochoa Ferriño" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,400&display=swap" rel="stylesheet" >
+    <title>Project: Simulation of a Queuing Model in a school cafeteria</title>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="homepage_neu.html#about">Startseite</a></li>
+        <li><a class="active" href="homepage_neu.html#project-showcase">Projekt-Schaufenster</a></li>
+        <li><a href="projects_neu.html#project-future">Zukünftige Projekte</a></li>
+        <li><a href="contact_neu.html#contact">Kontaktinformationen</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+<section id="homepage">
+  <h1>Masterstudium: Simulation und Analyse der Leistung der Universitätskantine</h1>
+  <h2>Warteschlangenmodell für den Durchfluss durch die Universitätskantine, die Identifizierung von Engpässen
+          und der Vorschlag von Lösungen zur Optimierung der Durchlaufzeiten.</h2>
+    <div class="project-container">
+        <h3>University canteens play a pivotal role in supporting students by providing reliable nutrition and a space
+            for social interaction. However, the bustling nature of these canteens often leads to challenges in
+            managing the flow of customers efficiently, resulting in long queues, extended service times, and an
+            overall suboptimal experience.
+            <br><br>
+            Recognizing the need to address these issues, as a master's degree student, I took part of a team that
+            sought the development of queuing models that would enable the exploration of solutions as a way to enhance
+            the efficiency of university canteens.
+            <br><br>
+            Under the guidance of faculty members, we were assigned the comprehensive task—to simulate a queuing model
+            that would mimic the operational dynamics of our university canteen. This undertaking aimed to help us
+            better understand the entire queue process, from the moment a student arrives at the canteen counter to the
+            payment of their order.
+        </h3>
+
+        <h3>The objectives of this simulation project were twofold: first, to gain a deeper understanding of the
+            complex interactions between customers, service providers, and available resources; and second, to identify
+            potential bottlenecks within the existing system.
+            <br><br>
+            In the following sections, we will delve into the methodologies employed, explore the significance of
+            queuing theory, an established branch of operations research, and how it can be applied to the context of
+            university canteens.
+            <br><br>
+            Furthermore, we will discuss the challenges encountered during the simulation process, the key findings
+            that emerged from their analysis, and the innovative solutions they devised to tackle the identified
+            bottlenecks.
+            <br><br>
+            By shedding light on this research endeavor, we aim to inspire a broader conversation about the practical
+            applications of queuing models in real-world scenarios, and the proposal of effective solutions that would
+            increase capacity, reduce service times, and ultimately optimize the overall lead time of the customers.
+        </h3>
+
+        <h3><b>STEP 1: Business Understanding</b><br><br>
+            <b>I. Queuing Theory:</b><br>
+            The project located within the canteen shares a lot of characteristics with Queuing theory, which is a
+            mathematical framework used to model the service of a queue like a convenience store, a restaurant or a
+            barbershop.
+            <br><br>
+            Queuing theory is used to optimize resource allocation and improve customer service in systems that
+            involve waiting times. It achieves this by identifying bottlenecks through the calculation of the
+            utilization factor of each station.
+            <br><br>
+            <b>II. Data generation:</b><br>
+            Another important aspect of this project is the focus on data generation for simulation models. Data
+            generation is extremely helpful in identifying and solidifying the definition of probability distributions
+            for the input variables (arrival rates and service times). By using Monte Carlo simulation, it is possible
+            to generate a large number of random samples that represents different types of scenarios within a queuing
+            system.
+            <br><br>
+            For <b>Key Performance Indicators (KPI)</b> we'll take into consideration the value added to the operation
+            of the canteen, which means a great significance on the capacity, lead times and utilization factor of each
+            of the serving stations.
+        </h3>
+
+        <h3><b>STEP 2: Data Understanding</b><br><br>
+            Like any other queuing model, customers arrive at the system according to a certain arrival process, often
+            behaving as a Poisson or as an exponential distribution. Once a customer arrives, if the server is
+            available, they are immediately served and move to the next station in order to pay for their order.
+            <br><br>
+            In order to correctly represent the queuing system of the university canteen we'll have to consider the
+            following states of an ordinary customer. To begin with, is the arrival state when the customer enters the
+            canteen, following from that is the first service station which is the moment when the customer engages with
+            the cafeteria staff in order to order and receive their meal, and finally is the second service station
+            where the customer approaches the school cashier and pays for whatever was ordered.
+            <br><br>
+            Taking everything into consideration, we applied a Markov chain in order to simulate the situation within
+            the university canteen. A Markov Chain is a stochastic model that consists of a set of states and
+            transition probabilities between those states. Markov Queuing processes facilitate the simulation and study
+            of system behaviour under different conditions and without memory (future events of a queuing system won’t
+            be affected by past history).
+            <br><br>
+            In queueing theory, Kendall’s notation is the standard system used to describe and classify a queuing node.
+            Following Kendall Notation, the system is represented as <b>M/M/1/1/∞/∞/FIFO</b>, indicating a Markovian
+            arrival process and service times, one server at each station, and unlimited queue capacity.
+        </h3>
+
+        <h3><b>STEP 3: Data Preparation</b><br><br>
+            Thanks to data understanding we were able to determine the most important aspects of the queuing system,
+            which were captured manually through visits to the university cafeteria and by noting important aspects of
+            each of our visits, such as: peak times when there is an increased customer demand in the system.
+            <br><br>
+            Once enough data surrounding the arrival rates and service times were collected we applied chi-square tests,
+            as a way to determine how close the collected data follows the behaviour of Poisson distribution. As data
+            collection increased, so did the p-value of the chi-square, to the point that after 100 data points we
+            decided to start the <b>Data generation</b> process.
+        </h3>
+
+        <img src="bilder/project_zeta1.png" alt="Project_Z1">
+
+        <section class="sample_code">
+            <b># Python CODE: Data Generation</b>
+            <br>def augment_poisson(data_augmented, sim_iteration, label):
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.figure(figsize=(10, 5))
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.subplot(1, 2, 1)
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data_augmented[1].plot(kind="hist", alpha=0.5, label="Order", color="green", bins=100)
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.xlabel(f"{label} (People per minute)")
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.ylabel("Frequency")
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.title("Population Distribution Original")
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mean = data_augmented[1].mean()
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;samples = np.random.poisson(mean, size=sim_iteration)
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new_data = pd.DataFrame({1: samples})
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data_augmented = pd.concat([data_augmented, new_data], ignore_index=True)
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size_two = data_augmented.shape[0]
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.subplot(1, 2, 2)
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data_augmented[1].plot(kind="hist", alpha=0.5, label="Order", color="orange", bins=100)
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.xlabel(f"{label} (People per minute)")
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.ylabel("Frequency")
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.title("Population Distribution Generated")
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.tight_layout()
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.show()
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return data_augmented[1], size_two
+        </section>
+
+        <h3>Once finished with data collection we implemented Monte Carlo Simulation as a way to generate multiple new
+            data from the data sets collected. By examining the data set distributions of arrival rate and service
+            times, I coded two separate data generation functions for both distributions (Poisson and Exponential), and
+            generating up to 700 new values that follows the population distribution of the original data.
+            <br><br>
+            By defining probability distributions for the input variables, such as arrival rates and service times, and
+            using Monte Carlo simulation techniques, it becomes possible to generate a large number of random samples
+            representing different scenarios. These samples can then be used to estimate various performance metrics,
+            such as average waiting time, queue length, system utilization, and probability of delay.
+            <br><br>
+            By comparing the population distributions between the data captured and the data generated through Monte
+            Carlo, we could see and measure through the mean values of both groups that the characteristics of the data
+            remains the same.
+        </h3>
+
+        <img src="bilder/project_zeta2.png" alt="Project_Z2">
+
+        <h3><b>STEP 4: Data Exploration and Visualization</b><br><br>
+            Through data exploration of the datasets of the arrival rate and service times, we could from the start
+            understand the behavior and characteristics of our queuing system. For the case of Queuing systems, waiting
+            times, utilization factor and lead times are all values that are calculated through data exploration, and
+            are essential performance measures used to evaluate the efficiency and effectiveness of the system.
+        </h3>
+
+        <img src="bilder/project_zeta3.png" alt="Project_Z3">
+
+        <h3><b>Waiting Time:</b> Waiting time refers to the amount of time a customer spends waiting in the queue
+            before being attended in the station. Waiting times can be calculated by tracking the time a customer
+            arrives at the system before the time they start receiving service.
+            <br><br>
+            <b>Lead Time:</b> Lead time represents the total time taken from when a customer arrives at the system
+            until they completed their entire service and left the system. It includes both the waiting time in the
+            queue and the time spent receiving service and is calculated by tracking the entire process time.
+            <br><br>
+            <b>Utilization Factor:</b> The utilization factor measures the extent to which the servers are being
+            utilized within the queuing system. It indicates the percentage of time that the servers are busy serving
+            customers compared to the total available time.
+        </h3>
+
+        <h3><b>STEP 5: Feature Engineering</b><br><br>
+            To calculate these metrics accurately in a queuing model simulation, you need to capture timestamps for
+            customer arrivals, start of service, end of service, and customer departures. For our simulation model we
+            need to first define the following elements within our simulation model:<br>--> 'Client Number'<br>-->
+            'Arrival Rate'<br>--> 'Waiting time before Canteen'<br>--> 'Service Time Canteen'<br>--> 'Waiting time
+            before Cashier'<br>--> 'Service Time Cashier'<br>--> 'Lead Time'
+            <br><br>
+            By tracking these timestamps and using appropriate formulas or algorithms, you can calculate waiting times,
+            lead times, and utilization factor to evaluate the performance of the queuing system and identify areas for
+            improvement.
+        </h3>
+
+        <section class="sample_code">
+            <b># Python CODE: Calculating Utilization factor through average of dataset</b>
+            <br>avg_arrival_rate = np.mean(new_arrival) / 60
+            <br>avg_service_time_uno = new_order.mean()
+            <br>avg_service_time_dos = new_cashier.mean()
+            <br><br>capacity_canteen = 1
+            <br>capacity_cashier = 1
+            <br><br>utilization_factor_canteen = (avg_arrival_rate * avg_service_time_uno) / capacity_order
+            <br>utilization_factor_cashier = (avg_arrival_rate * avg_service_time_dos) / capacity_cashier
+            <br><br>client_data = pd.DataFrame(columns=['Client Number', 'Arrival Rate', 'Waiting time before Canteen',
+            'Service Time Canteen', "Waiting time before Cashier", "Service Time Cashier", "Lead Time"])
+            <br><br>client_data["Waiting time before Canteen"] = (client_data["Waiting time before Canteen"] -
+            client_data["Service Time Canteen"]).abs()
+            <br><br>client_data["Waiting time before Cashier"] = (client_data["Waiting time before Cashier"] -
+            client_data["Service Time Cashier"]).abs()
+            <br><br>client_data["Lead Time"] = client_data[['Waiting time before Canteen', 'Service Time Canteen',
+            "Waiting time before Cashier", "Service Time Cashier", "Lead Time"]].sum(axis=1)
+        </section>
+
+        <h3><b>STEP 6: Model Building and Training</b><br><br>
+            For this Queuing System simulation problem, we integrated Python Programming Language and used the SimPy
+            library which is a Discrete Event Simulation (DES) package for Python. SimPy allows us to generate an
+            environment that recreates the behaviour of the process and resources measured within the canteen.
+            <br><br>
+            The python code tries to represent the queuing system by taking random values from the three different
+            generated datasets as a way to represent the randomness that might occur in the day-to-day operations
+            within the cafeteria.
+            <br><br>
+            For the arrival process we arranged so that the first station (Canteen) receives the arrival rate generated
+            by the “arrival_process_stations” function and processes the service time through the
+            “service_process_canteen” function, once the request is settled and the service time is complete the
+            request is then passed to the second station (CASHIER) which is represented by the
+            “service_process_cashier” function.
+        </h3>
+
+        <section class="sample_code">
+            <b># Python CODE: Building the Queueing Model</b>
+            <br>env = simpy.Environment()
+            <br><br>server_number_uno = simpy.Resource(env, capacity=capacity_order)
+            <br>server_number_dos = simpy.Resource(env, capacity=capacity_cashier)
+            <br><br>station_canteen = simpy.Store(env)
+            <br>queue_between = simpy.Store(env)
+            <br>station_cashier = simpy.Store(env)
+            <br><br>env.process(arrival_process_stations(env, client_number=0, client_data=client_data))
+            <br>env.run(until=(3600 * work_days))
+            <br><br><b># What is simpy.Environment()?</b>
+            <br>Within the SimPy library, the Environment class represent the environment where events occur and are
+            scheduled, following key features exclusive to the SimPy library like Simulation Time, Event Scheduling and
+            Handling, Process Execution, etc.
+            <br><br><b># What is simpy.Resource()?</b>
+            <br>Within the SimPy library, the Resource class represents the contention capacity within a station, it
+            represents how many processes can run concurrently. Within the python code, customers generate
+            <b>request()</b> in order to get access to the resource and are then <b>release()</b> once the task is
+            completed.
+            <br><br><b># What is simpy.Store()?</b>
+            <br>Within the SimPy library, the Store class represents the queues, buffers, or holding areas where
+            simulation processes put events if the <b>Resource()</b> is occupied. The <b>Resource()</b> class retrieves
+            events by using the <b>get()</b> function.
+        </section>
+
+        <h3>For the arrival process, the simulation model generates new arrivals through the extraction of random
+            arrival rate values (which are measured in arrival per minutes) and are then converted to inter-arrival
+            times in order to determine the time it takes for one event to wait before the next.
+            <br><br>
+            Once generated, the client is registered in a number and is then <b>put()</b> in the first station buffer
+            (station_order) and runs the service process that represents the canteen service station. Once inside the
+            canteen service station, the station requests a new customer through <b>get()</b> and measures the arrival
+            time of the customer, it's service time within the station and the Waiting time before entering the Canteen.
+        </h3>
+
+        <section class="sample_code">
+            <b># Python CODE: Arrivals</b>
+            <br>def arrival_process_stations(env, client_number, client_data):
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while True:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrival_select = np.random.choice(new_arrival.values)
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;client_data.loc[client_number, 'Arrival Rate'] = arrival_select
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if arrival_select != 0:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interarrival_time = 60 / arrival_select
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interarrival_time = 60
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield env.timeout(interarrival_time)
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;client_number += 1
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;station_order.put((env.now, client_number))
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;env.process(service_process_order(env, client_data))
+        </section>
+
+        <section class="sample_code">
+            <b># Python CODE: Service</b>
+            <br>def service_process_cashier(env, client_data):
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while True:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with server_number_dos.request() as request:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield request
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrival_time, client_number = yield station_cashier.get()
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;service_time_dos = np.random.choice(new_cashier.values)
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield env.timeout(service_time_dos)
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;client_data.loc[client_number, "Service Time Cashier"] = service_time_dos
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;client_data.loc[client_number, 'Waiting time before Cashier'] = env.now - arrival_time
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;env.process(service_process_cashier(env, client_data))
+        </section>
+
+        <h3>For the final service process, like the Canteen station, the station requests a new customer through the
+            <b>get()</b> function from the queue station that is between the two service stations (station_cashier) and
+            measures the time of the customer within the station, it's service time and the Waiting time before
+            entering the cashier.
+            <br><br>
+            Once the cashier process is finished the Lead time is calculated for each and every customer, the
+            utilization factors are calculated after the simulation process is finished as well as the total number of
+            customers.
+        </h3>
+
+        <h3><b>STEP 7: Model Evaluation and Comparison</b><br><br>
+            In order to verify if the simulation model is accurate as an scenario of the queueing model, the code
+            calculates the utilization factor of each station twice. Once by using the average of the arrival and
+            service times of the dataset and a second time by manually calculating the utilization factor of the data
+            measured within the simulation model.
+            <br><br><b>Results from the dataset:</b>
+            <br>+ Utilization factor of the CANTEEN station: 1.4912927763838917
+            <br>+ Utilization factor of the CASHIER station: 0.9009195651771269
+            <br><br><b>Results from the simulation model:</b>
+            <br>+ Utilization factor of the CANTEEN station: 1.498312288696883
+            <br>+ Utilization factor of the CASHIER station: 0.9030687642105081
+        </h3>
+
+        <video id="video_1" controls autoplay loop muted>
+            <source src="videos/project_zeta1.mp4" type="video/mp4">
+        </video>
+
+        <h3>As we can see from both the video files and the utilization factor results we can easily determine that the
+            bottleneck within the simulation model is located within the canteen service station. This bottleneck can
+            be further tested by increasing the number of servers within the service station as a way to decrease the
+            utilization factor and reduce the waiting times before the first station.
+            <br><br><b>Average measures from a (1 Server per Station):</b>
+            <br>+ Waiting time before Canteen&nbsp;&nbsp;&nbsp;&nbsp;10020.542148
+            <br>+ Service Time Canteen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;38.377895
+            <br>+ Waiting time before Cashier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15.112265
+            <br>+ Service Time Cashier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23.131278
+            <br>+ Lead Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9042.589862
+        </h3>
+
+        <video id="video_2" controls autoplay loop muted>
+            <source src="videos/project_zeta2.mp4" type="video/mp4">
+        </video>
+
+        <section class="sample_code">
+            <b># PYTHON RESULTS (1 Server per Station):</b>
+            <br>Client Number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1
+            <br>Waiting time before Order&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0
+            <br>Service Time Order&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;22.832561
+            <br>Waiting time before Cashier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0
+            <br>Service Time Cashier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;51.881967
+            <br>Lead Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;74.714528
+            <br>Name: 1, dtype: object
+            <br><br>
+            <br>Client Number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;48
+            <br>Waiting time before Order&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;391.274495
+            <br>Service Time Order&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;38.645774
+            <br>Waiting time before Cashier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0
+            <br>Service Time Cashier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21.77937
+            <br>Lead Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;451.699639
+            <br>Name: 48, dtype: object
+        </section>
+
+        <h3>Not only can we visually see the reduction of the scalable increase of waiting time for the bottleneck but
+            we can also see the changes within the average measures from the Waiting Times of each station. We can
+            assume, that once the utilization factor falls behind 1, there is no longer a permanent bottleneck within
+            the queueing system.
+            <br><br><b>Average measures from a (2 Servers in Canteen, 1 in Cashier):</b>
+            <br>+ Waiting time before Canteen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.566400
+            <br>+ Service Time Canteen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;40.652416
+            <br>+ Waiting time before Cashier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;25.384632
+            <br>+ Service Time Cashier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23.698804
+            <br>+ Lead Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;96.270926
+        </h3>
+
+        <h3><b>STEP 8: Model Refinement</b><br><br>
+            There are definitely multiple ways for a queuing model to better represent the reality of a queing sytem,
+            like for example the consideration of realistic variations within the workload, which are often experienced
+            as fluctuations in customer arrivals and service demands throughout the day (Peak and slow hours).
+            <br><br>
+            The models arrival rate can be seriously skewed if we simulate a seemingly constant customer demand. For
+            that reason, scaling the arrival rate would better represent the strain of customer demand during peak
+            hours and would help replicate these variations in workload accurately.
+            <br><br>
+            In summary, considering peak and slow times within a queuing system simulation increases the accuracy and
+            realism of the model. It enables the replication of <b>workload variations</b>, facilitates
+            <b>staffing decisions</b>, provides a comprehensive performance evaluation, aids in capacity planning, and
+            supports informed decision-making processes.
+        </h3>
+
+        <h3><b>CONCLUSION:</b><br> By building a queuing model that better represents the university canteen, we can
+            accurately identify bottlenecks within the system, formulate proposals to the capacity and the service
+            times of a system as viable solutions.
+            <br><br>
+            We arrived at the conclusion that while a "2 Servers in Canteen, 1 in Cashier" eliminates any type of large
+            bottleneck within the scheduling system, it is still susceptible to "Peak times" where the arrival rate of
+            the customers scale considerably in comparison to normal service hours.
+            <br><br>
+            These insights help in making informed decisions that align with the dynamic nature of the queuing system
+            and its customer demands. Further tests using this simulation model would inevitably provides valuable
+            understanding into how the queuing system performs during high-demand scenarios and how it can be optimized
+            to handle such peak periods more effectively.
+        </h3>
+    </div>
+</section>
+
+
+  <footer>
+    <p>Erstellt von Adrián Ochoa Ferriño - 2023</p>
+  </footer>
+
+</body>
+
+<body style="background-color:#E1E6E1;"></body>
+
+<style>
+  .project-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 40fr 45fr;
+    grid-gap: 50px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 1440px) {
+  .project-container {
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+  .project-container img {
+    width: 672px;
+    height: 378px;
+    margin-right: 20px;
+    border-radius: 30px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .project-container video {
+    width: 672px;
+    height: 378px;
+    margin-right: 20px;
+    border-radius: 30px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .project-container p {
+    text-align: justify;
+    width: 30%;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #EB6534;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
+
+  nav {
+    background-color: #232020;
+    display: flex;
+    height: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    overflow: hidden;
+    position: fixed;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    color: #E1E6E1;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+  }
+
+  nav a:hover {
+    background-color: #F24236;
+    color: #232020;
+  }
+
+  nav a.active {
+    background-color: #FF6A33;
+    color: #E1E6E1;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  footer {
+    background-color: #232020;
+    color: #E1E6E1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+  }
+
+  footer p {
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+    font-weight: bold;
+
+  }
+
+  h2 {
+    font-size: 28px;
+    margin: 20px 0;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 24px;
+    margin: 20px 0;
+    font-weight: normal;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 10px 0;
+    font-weight: normal;
+  }
+
+  .sample_code {
+    background-color: #282c34;
+    color: #fff;
+    padding: 20px;
+    overflow: auto;
+  }
+
+  .sample_code pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: "Consolas", "Courier New", monospace;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .btn {
+    background-color: #EB6534;
+    color: #232020;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .btn:hover {
+    background-color: #F24236;
+    color: #232020;
+  }
+
+  #content {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			background-color: white;
+			border: 1px solid black;
+			padding: 20px;
+  }
+</style>
+</html>
