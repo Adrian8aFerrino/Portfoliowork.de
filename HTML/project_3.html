@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+    <text y=%22.9em%22 font-size=%2290%22>🐸</text></svg>">
+    <meta name="description" content="Future Projects" />
+    <meta name="author" content="Adrián Ochoa Ferriño" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,400&display=swap" rel="stylesheet" >
+    <title>Project 3: Waste understanding in Manufacturing</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+
+<py-config>
+    packages = ["pandas", "scipy", "seaborn"]
+    [[fetch]]
+    from = 'databases/'
+    files = ['pearson_matrix.csv', 'spearman_matrix.csv']
+</py-config>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="homepage_neu.html#about">Startseite</a></li>
+        <li><a class="active" href="homepage_neu.html#project-showcase">Projekt-Schaufenster</a></li>
+        <li><a href="projects_neu.html#project-future">Zukünftige Projekte</a></li>
+        <li><a href="contact_neu.html#contact">Kontaktinformationen</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+<section id="homepage">
+  <h1>Verschwendungsverständnis in der Produktion:</h1>
+  <h2>Qualitätskontrolle und Qualitätsvorhersage in einem Eisenschwamm-werk. Wie Interpretationen von Analysen und
+      Modellen verwendet werden können, um die Abfallproduktion zu kontrollieren und die Abfallerzeugung vorherzusagen.
+  </h2>
+    <div class="project-container">
+        <h3>SUSTAINABILITY has quickly become the priority of modern manufacturing, has quickly become a priority
+            within the modern manufacturing world, as the demand for eco-friendly products and processes has surged.
+            Alongside an environmentally conscious world, there has been a growing focus on corporate responsibility,
+            where manufacturing companies are under extreme pressure to reduce their environmental impact without
+            affecting profitability or costs.
+            <br><br>
+            For the case of manufacturing processes, waste comes in different forms: mainly material or energy waste,
+            which creates a necessity focused on understanding waste within and around manufacturing operations as a
+            means to generating value, increasing profitability, and reducing waste.
+            <br><br>
+            Following this trend, new sustainable strategies have become the focal point within the iron and steel
+            industry, but it comes with great challenges, as a great deal of manufacturing operations handle complex
+            chemical and thermodynamic processes, like those that happen within a sponge iron reactor.
+            <br><br>
+            Thanks to the integration of data analytics and machine learning models within the manufacturing industry,
+            complex operations such as direct reduction can be quantified and adapted to Quality control and Quality
+            Prediction models in order to monitor waste production, control the quality of the final product, and
+            predict waste generation throughout a sponge iron plant.
+        </h3>
+
+        <h3>The challenge for sustainability projects come mainly from trying to understand the nature of waste streams
+            and develop effective strategies for controlling production by monitoring the process variables and
+            analyzing the quality of the raw materials and the final product.
+            <br><br>
+            Throughout this project we will use the <b>CRISP-DM</b> methodology in order to generate predictive models
+            that can be used to forecast waste generation by identifying patterns through control sensors within a
+            direct reduction reactor, and information obtained from material samples taken before and after the process.
+            <br><br>
+            Within this project, we will explore the concept of manufacturing sustainability and how interpretations of
+            analyses and models can be used to control waste production and predict waste generation. By leveraging
+            data-driven approaches which manufacturers can then use to identify the sources of waste, optimize their
+            production processes, and reduce their environmental footprint.
+            <br><br>
+            This project addresses two objectives, namely: <b>Quality control</b> and <b>Quality prediction</b> by
+            using simulated data that might be found in a typical sponge iron plant. (As a result, all the data
+            presented in this project is simulated and is not representative of real-world data)
+        </h3>
+
+        <h3><b>STEP 1: Business Understanding</b><br><br>
+            <b>I. Quality control:</b><br>
+            Quality control is an essential process within manufacturing that aims to identify and correct any defects
+            or deviations from the ideal production process. This project is developed for the analysis of data from
+            various quality control sensors for the purpose of identifying patterns of quality issues considering all
+            elements involved in the manufacturing process.
+            <br><br>
+            <b>II. Quality prediction:</b><br>
+            Quality prediction in manufacturing processes uses data and statistical modeling to forecast the quality of
+            the final product based on the input variables and process parameters. The goal is to identify potential
+            quality issues early in the production process, giving the manufacturer the opportunity of correcting the
+            production before the generation of the final product.
+            <br><br>
+            For <b>Key Performance Indicators (KPI)</b> we'll take into consideration the value added to the
+            manufacturing process when it's adapted to deal with waste production. The KPI's should promote a decrease
+            in costs, an increase in profits, and a reduction of environmental impact. (As waste usually represent
+            inefficient processes, low quality product or a combination of both)
+        </h3>
+
+        <h3><b>STEP 2: Data Understanding</b><br><br>
+            Data understanding is focused on covering all activities that may be involved with the problem. In the case
+            for our manufacturing project, we focus on collecting data, examining the data and evaluating the quality
+            of data obtained throughout all sampling procedures and sensors located within the reactor.
+            <br><br>
+            Before continuing the project, let's make a short introduction as to what is sponge iron. Sponge iron, also
+            known as Direct Reduced Iron (DRI), is a highly porous and metallic product that is the result of iron ore
+            that has gone through the process of direct reduction within a direct reduction reactor like a shaft
+            furnace.
+            <br><br>
+            Within the DR reactor the iron ore experiences several chemical and thermodynamic processes such as "Redox"
+            reaction, "Gas-solid" reactions with reducing agents, and Heat transfer. These types of processes involve
+            not only relevant variables such as temperature, pressure and presence of chemical compounds, but also
+            involve physical characteristics that are present within the iron ore and the final product.
+            <br><br>
+            Before applying any type of data models for quality control or quality prediction, we'll first have to
+            understand the scale and range of the data. In this case, the project will take into account the production
+            volume, raw material data, sensors within the reactor and quality control records.
+            <br><br>
+            <b>NOTE:</b> Within this project we won't consider any data quality issues like anomalies or missing data
+            as all data is generated specifically for this project.
+        </h3>
+
+        <h3>Now let's continue by considering the following available data sources obtained from a direct reduction
+            plant:<br><br>
+            <b>1. Raw material sample data:</b> serves as a way to analyze the quality of the iron ore material before
+            it turns into Direct Reduced Iron (DRI). <br>+ Ore size (cm)<br>+ Iron oxide purity % (Fe2O3)<br>+ Impurity
+            1 % (Al2O3)<br>+ Impurity 2 % (S)<br>+ Impurity 3 % (CaO)<br>+ Impurity 4 % (C)<br>+ Abrasion measure (mm³)
+            <br>+ K2Cr2O7 content<br>+ MgO content<br>+ SiO2 content<br>+ Unit of Porosity % (Φ)
+        </h3>
+
+        <img src="bilder/project_drei1.png" alt="Project dataset 1">
+
+        <h3><b>2. Reactor sensors:</b> serves as a way to analyze the environment within the direct reduction reactor,
+            it displays the measurements of the multiple Manometer and Thermometers located inside the reactor.
+            <br>+ Temperature measurement 1 (C°)<br>+ Pressure measurement 1 (Pa)<br>+ Temperature measurement 2 (C°)
+            <br>+ Pressure measurement 2 (Pa)<br>+ Temperature measurement 3 (C°)<br>+ Pressure measurement 3 (Pa)
+            <br>+ Temperature measurement 4 (C°)<br>+ Pressure measurement 4 (Pa)<br>+ Temperature measurement 5 (C°)
+            <br>+ Pressure measurement 5 (Pa)
+        </h3>
+
+        <img src="bilder/project_drei2.png" alt="Project dataset 2">
+
+        <h3><b>3. Agent flows:</b> serves as a way to analyze the infusion of reagents, binders, and fluxes throughout
+            the reducing process within the direct reduction reactor.<br>+ Reagent 1 H2 (L/min)<br>+ Reagent 2 CO
+            (L/min)<br>+ Reagent 3 CH4 (L/min)<br>+ Binder 1 Al2O3 (kg/min)<br>+ Binder 2 4SiO2 (kg/min)<br>+ Binder 3
+            C6H10O5 (kg/min)<br>+ Binder 4 C12H22O11 (kg/min)<br>+ Flux 1 CaCO3 (L/min)<br>+ Flux 2 CaMgCO3 <br>+ Flux
+            3 SiO2
+        </h3>
+
+        <h3>Agent flows are a very important element to the direct reduction process since every type of chemical
+            component has a function to the overall state of the final product.<br><br>For example, the <b>Reagents</b>
+            (or reducing gas) react with the iron oxide (FeO) in the direct reduction process to produce sponge iron
+            (Fe), while a <b>Binders</b> is a powder that is added to hold fibers together and create a cohesive
+            structure of the iron pellets, and finally the <b>Fluxes</b> serve to promote the chemical reactions that
+            happen under certain environmental conditions.
+        </h3>
+
+        <h3><b>4. DRI sample data:</b> serve as a way to analyze the distribution between the final product and the
+            waste generated after the Direct Reduction process, as well as the quality of the DRI final product which is
+            measured by the types of impurities commonly found within the iron ore.<br>+ DRI pellet %<br>+ Pellet size
+            (cm)<br>+ DRI purity % (Fe)<br>+ Impurity 1 % (S)<br>+ Impurity 2 % (C)<br>+ Metallization %<br>+ Slag %
+            <br>+ Waste powder %<br>+ Unit of Porosity % (Φ)
+        </h3>
+
+        <img src="bilder/project_drei3.png" alt="Project dataset 3">
+
+        <h3><b>STEP 3: Data Preparation</b><br><br>
+            Now that all data is collected, we can identify that variables come from different databases that represent
+            different sampling points within the direct reduction process. Due to this fact, we classify the databases
+            in different time groups as a way to help us determine the relationships that exists between the variables
+            and the generation of the DRI fines at the end of the process.
+            <br><br>
+            The DRI industrial process lasts a total of 9 hours of which the pellet enters the furnace and undergoes
+            the physical and chemical transformation that turns the iron pellet into quality DRI. For this reason, the
+            four databases mentioned in the data understanding section has to undergo a transformation as a way to
+            adapt to the different time periods.
+            <br><br>
+            For example, if we have a measurement made of the DRI at 4pm we need to compare the result with the raw
+            material sample data that was taken 9 hours before (7 am). By classifying all variables by their time group
+            (in relation to the DRI reduction process) we can align all databases in a way that a single pellet of raw
+            material can be followed and associated to their respective final product.
+        </h3>
+
+        <section class="sample_code">
+            <b># Python CODE: Aggregation of data</b>
+            <br><b>Starting with the data collected from the raw material sampling phase, we consider that the ore that
+            is sampled is compared to the DRI that is generated 9 hours later, which is why the "Date" variable is
+            shifted 9 hours.</b>
+            <br><br>try:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;df_raw_material['Date'] = pd.to_datetime(df_raw_material['Date'], format='%d/%m/%Y %H:%M')
+            <br>except ValueError as e:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;df_raw_material['Date'] = pd.to_datetime(df_raw_material['Date'], format='mixed')
+            <br>df_raw_material['Date'] = df_raw_material['Date'] - pd.Timedelta(hours=9)
+            <br><br><b>Next is the data collected from the sensors located within the reactor which represent the
+            temperatures and pressures measured within the DR reactor. In this case since the measurements are made
+            every 2 minutes instead of 30 minutes, you will have to aggregate the data to every 30 minutes.</b>
+            <br><br>try:
+            resampled_df = df_reactor_sensor.resample('30T').agg({<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Temperature 1':
+            ['mean', 'std'], 'Pressure 1': ['mean', 'std'],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Temperature 2': ['mean',
+            'std'], 'Pressure 2': ['mean', 'std'], <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Temperature 3': ['mean', 'std'],
+            'Pressure 3': ['mean', 'std'],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Temperature 4': ['mean', 'std'], 'Pressure
+            4': ['mean', 'std'],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Temperature 5': ['mean', 'std'], 'Pressure 5':
+            ['mean', 'std']})
+            <br>resampled_df.reset_index(inplace=True)
+            <br><br><b>Since the data collected from the sensors located within the reactor influences the quality of
+            the DRI pellet, it is important to also consider that the values obtained during the 9-hour process have to
+            be considered when building the final model.</b>
+            <br><br><b>For that reason a rolling window function is used for calculating the mean and standard
+            deviation within that window at each step, and then adjusting the reactor data to match the final product.
+            (This technique is particularly useful for creating aggregated data and will be applied for both sensor
+            data and agent flow data).</b>
+            <br><br>df_reactor_sensor = df_reactor_sensor.rolling("9H").mean()
+            <br>df_reactor_sensor = df_reactor_sensor.iloc[18:]
+        </section>
+
+        <img src="bilder/project_drei4.png" alt="Date adjustment">
+
+        <h3><b>STEP 4: Data Exploration and Visualization</b><br><br>
+            Now that the data from all sources are completely aligned it is time to apply data exploration and
+            visualization techniques in order to understand the data's characteristics, uncover potential patterns, and
+            make informed decisions about which variables are relevant for the modeling phase.
+            <br><br>
+            A way to measure the strength and direction of relationship between multiple variables can be done through
+            <b>Multi-variable correlation</b> which is focused on generating a correlation matrix in order to examine
+            pairwise relationships between the variables related to the raw materials, the DR process and the final DRI
+            product. In this project we will not only apply basic Pearson correlation metrics but also prove if there are
+            non-linear relationships between the variables using Spearman's rank correlation coefficient.
+        </h3>
+
+        <section class="sample_code">
+            <b>Pearson's correlation matrix</b> measures the linear relationship between two continuous variables, which
+            in the case of our dataset, it is applicable to all prepared data. Pearson's correlation is commonly used
+            when analyzing relationships between variables with continuous data, assuming that the data is normally
+            distributed and that the relationship between all variables is linear.
+            <br><br>
+            <div id="pearson_heatmap"></div>
+            <py-script output="pearson_heatmap">
+                import pandas as pd
+                import seaborn as sns
+                import matplotlib.pyplot as plt
+
+                fig1, ax1 = plt.subplots(1)
+                df = pd.read_csv('pearson_matrix.csv', header=0, index_col=0)
+                sns.heatmap(df, annot=False, cmap="Blues", ax=ax1)
+                plt.title("Pearson correlation (DRI process)")
+                display(fig1)
+            </py-script>
+
+            <br><br>
+            <b>Spearman's correlation matrix</b> measures instead the strength and direction of a
+            monotonic relationship between two variables. Pearson's correlation coefficient does not assume linearity
+            between the variables, nor does it assume that the data is normally distributed, which is particularly
+            helpful if there are exponential, logarithmic or even polynomial relationships between two variables.
+            <br><br>
+            <div id="spearman_heatmap"></div>
+            <py-script output="spearman_heatmap">
+                import pandas as pd
+                import seaborn as sns
+                import matplotlib.pyplot as plt
+
+                fig2, ax2 = plt.subplots(1)
+                df_2 = pd.read_csv('spearman_matrix.csv', header=0, index_col=0)
+                sns.heatmap(df_2, annot=False, cmap="Greens", ax=ax2)
+                plt.title("Spearman correlation (DRI process)")
+                display(fig2)
+            </py-script>
+        </section>
+
+        <h3>The main variables we would like to focus on are those that represent either waste (Waste powder %) or DRI
+            pellet quality (DRI purity %, Fe % and Metallization %). <br> + DRI purity represent
+            <b>Percent reduction</b> which refers to the proportion of iron oxide that has been reduced to metallic
+            iron (Fe) during the DRI process, which measures how effectively the reduction reaction has taken place as
+            a higher percent reduction indicates that a greater portion of the iron ore has been reduced to its
+            metallic form.
+            <br><br>
+            + Metallization % represent <b>Percent metallization</b> which is a measure of purity of the metallic DRI
+            product, indicating how much of the reduced material consists of pure metallic iron. Unlike the Fe % metric,
+            the Percent metallization also takes into account any impurities or non-iron components that might be
+            present in the reduced product.
+            <br><br>
+            According to the <b>Pearson's correlation matrix</b>, the variables that have a strong positive linear
+            relationship to waste powder (%) has been the <b>Ore size (0.999)</b> and the <b>DRI purity % (0.998)</b>,
+            which makes sense if we consider how the final purity of the product reduces the grade of waste produced.
+            On the other hand, <b>Spearman's correlation matrix</b> found strong non-linear relationships with the
+            variables <b>K2Cr2O7 (0.792)</b> and <b>SiO2 (0.767)</b>, which is interesting as they represent natural
+            impurities within the raw ore material.
+            <br><br>
+            Additionally by focusing on other variables that represent the quality of the final DRI pellet, we can
+            identify moderate negative relationships between the DRI purity % and the raw material
+            <b>Porosity (-0.523)</b> where a lower porosity means a lower DRI quality. For the case of Metallization %
+            we can identify a moderate positive relationship between the Percent metallization and the
+            <b>Temperature (0.462)</b> measured within the DRI reactor.
+        </h3>
+
+        <h3><b>STEP 5: Feature Engineering</b><br><br>
+            Due to the high quantity of variables we will also apply a <b>Multicollinearity</b> test in order to reduce
+            the dimensionality of the data introduced to the model. This is done as a way to avoid two or more
+            independent variables in a regression model to display high correlation between each other, leading to
+            challenges in modeling due to a mixture of each variable's unique contribution ot the result.
+            <br><br>
+            Avoiding Multicollinearity through the reduction of dimensionality can be done through the Principal
+            Component Analysis <b>(PCA)</b> technique that transforms correlated variables into a smaller set of
+            uncorrelated variables called principal components without losing information carried by the original
+            variables.
+            <br><br>
+            But before that
+        </h3>
+
+        <h3>
+            As we are also working with historical data it is important to consider <b>Auto-correlation tests</b> which
+            measure the correlation between a time series and its lagged versions. These kinds of tests helps in
+            identify serial correlation or historical patterns within data.
+            <br><br>
+            Additionally, the use of a <b>Granger causality tests</b> assess whether one time series can predict
+            another.
+        </h3>
+
+        <h3><b>STEP 6: Model Building and Training</b><br><br>
+            Quality control and quality prediction of an industrial process is crucial in a sponge iron plant as they
+            directly impact the overall production efficiency, product quality, and customer satisfaction.
+            <br><br>
+            Predictive models can be used to identify factors that are likely to affect the quality of the sponge iron
+            produced, such as changes in the composition of the raw materials or changes in the production process.
+            + take proactive measures to address them.
+            + optimize their production processes through data-driven decisions
+            + data on production times, material usage, and waste production rates.
+        </h3>
+
+        <h3><b>STEP 7: Model Evaluation and Comparison</b><br><br>
+            If defect rates are consistently higher than expected, this indicates that there are issues within the
+            production process or the quality of the raw material. In order to evaluate the model we will use the
+            following metrics:<br><br>Mean Absolute Error (MAE)<br>Mean Squared Error (MSE)<br>Root Mean Squared Error
+            (RMSE)<br>R-Squared (R2)
+
+        </h3>
+
+        <h3><b>STEP 8: Model Refinement</b><br><br>
+            By comparing the result of the model to the global benchmark
+        </h3>
+
+        <h3><b>Conclusion:</b><br>
+            Quality control is essential to ensure that the sponge iron produced meets the required quality standards
+            consistently through regular testing and inspections that feeds the data infrastructure with quality and
+            reliable information help to identify and address any issues that may affect the quality of the sponge iron.
+        </h3>
+    </div>
+</section>
+
+
+  <footer>
+    <p>Erstellt von Adrián Ochoa Ferriño - 2023</p>
+  </footer>
+
+</body>
+
+<body style="background-color:#E1E6E1;"></body>
+
+<style>
+  .project-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 40fr 45fr;
+    grid-gap: 50px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 1440px) {
+  .project-container {
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+  .project-container img {
+    width: 672px;
+    height: 378px;
+    margin-right: 20px;
+    border-radius: 30px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .project-container video {
+    width: 672px;
+    height: 378px;
+    margin-right: 20px;
+    border-radius: 30px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .project-container p {
+    text-align: justify;
+    width: 30%;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #EB6534;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
+
+  nav {
+    background-color: #232020;
+    display: flex;
+    height: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    overflow: hidden;
+    position: fixed;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    color: #E1E6E1;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+  }
+
+  nav a:hover {
+    background-color: #F24236;
+    color: #232020;
+  }
+
+  nav a.active {
+    background-color: #FF6A33;
+    color: #E1E6E1;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  footer {
+    background-color: #232020;
+    color: #E1E6E1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+  }
+
+  footer p {
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+    font-weight: bold;
+
+  }
+
+  h2 {
+    font-size: 28px;
+    margin: 20px 0;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 24px;
+    margin: 20px 0;
+    font-weight: normal;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 10px 0;
+    font-weight: normal;
+  }
+
+  .sample_code {
+    background-color: #282c34;
+    color: #fff;
+    padding: 20px;
+    overflow: auto;
+  }
+
+  .sample_code pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: "Consolas", "Courier New", monospace;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .btn {
+    background-color: #EB6534;
+    color: #232020;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .btn:hover {
+    background-color: #F24236;
+    color: #232020;
+  }
+
+  #content {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			background-color: white;
+			border: 1px solid black;
+			padding: 20px;
+  }
+</style>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+    <text y=%22.9em%22 font-size=%2290%22>🐸</text></svg>">
+    <meta name="description" content="Streamlit dashboard" />
+    <meta name="author" content="Adrián Ochoa Ferriño" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,400&display=swap" rel="stylesheet" >
+    <title>Project: Creating a Streamlit dashboard</title>
+</head>
+<body>
+    <header>
+        <nav>
+        <ul>
+            <li><a href="homepage_neu.html#about">Startseite</a></li>
+            <li><a class="active" href="homepage_neu.html#project-showcase">Projekt-Schaufenster</a></li>
+            <li><a href="projects_neu.html#project-future">Zukünftige Projekte</a></li>
+            <li><a href="contact_neu.html#contact">Kontaktinformationen</a></li>
+        </ul>
+        </nav>
+    </header>
+
+
+    <section id="homepage">
+        <h1>Erstellen eines Streamlit-Dashboard</h1>
+        <h2>This project is meant to test the capabilities of Streamlit in transforming raw data from excel files into
+            interactive dashboard web application as well as offering a serverless user interface that is operated by
+            Python code. This project serves as a way to show how dashboards can be useful for multiple functioning
+            dashboards that could display useful metrics and graphs for future projects.
+        </h2>
+
+        <div class="project-container">
+            <h3>Dashboards play a crucial role in data analysis by providing a visual and interactive way to present,
+                analyze, and manage data. They enable professionals to derive actionable insights, monitor trends, and make
+                informed decisions. Dashboards can display data visualizations, statistical analyses, machine learning
+                model outputs, and more.
+                <br><br>See how dashboards can transform an Excel file into an interactive dashboard:<br><br>
+                <a href="https://projectxpy-jmbkwmga69tt2qjhgzbvdy.streamlit.app/" class="btn">🐸 Visit Streamlit
+                    Dashboard 🐸</a>
+            </h3>
+
+            <h3>
+                Dashboards help in:
+                <br><b>+ Presenting</b> exploratory data analysis results.
+                <br><b>+ Showcasing</b> model performance metrics and comparisons.
+                <br><b>+ Sharing</b> predictions and recommendations from machine learning models.
+                <br><b>+ Illustrating</b> historical trends and patterns.
+                <br><b>+ Monitoring</b> key performance indicators (KPIs) in real-time
+                <br><b>+ Displaying</b> ad-hoc analyses and drill down into specific data subsets.
+                <br><b>+ Perform</b> what-if scenarios by manipulating variables.
+            </h3>
+
+            <h3>Streamlit is a popular Python library specifically designed for <b>Data Visualization</b> where
+                elements such as charts, graphs, heatmaps, and maps help convey data patterns and trends more
+                effectively than raw numbers, and with the help of Streamlit, these elements can have an interactive
+                element that gives additional value to all visualization tools.
+                <br><br>Streamlit also offers a higher range of <b>Interactivity</b> features like filtering and
+                sorting, which enable users explore data from different angles and levels of detail while also making
+                the dashboard accessible and usable across different devices and screen sizes through
+                <b>Responsive design</b>.
+                <br><br>
+                Streamlit allows you to develop a simple, data driven web application for data science projects. By
+                enabling users to manipulate dataframes, plot metrics, perform analysis tests and deploy Python
+                functions without the need of installing a Python interpreter.
+            </h3>
+
+            <h3>The collaborative nature of interactive dashboards fosters effective communication. Through dashboards,
+                one can provide a shared platform where anyone invested on a project can access, interpret, and discuss
+                data insights, by bridging the gap between specialized expertise and practical decision-making.
+                <br><br>
+                For this reason, dashboards serve as visual command centers that offer dynamic, real-time snapshots of
+                data trends, anomalies, and correlations. This synergy cultivates a culture of data-driven innovation,
+                and help uncover hidden patterns and outliers that might otherwise go unnoticed.
+                <br><br>
+                Streamlit offers quick development cycles for displaying interactive data oriented applications while
+                working seamlessly with Pandas, Matplotlib, Plotly, Seaborn, Altair, Scikit-learn, TensorFlow and even
+                PyTorch.
+            </h3>
+        </div>
+    </section>
+
+    <footer>
+        <p>Erstellt von Adrián Ochoa Ferriño - 2023</p>
+    </footer>
+</body>
+
+<body style="background-color:#E1E6E1;"></body>
+
+<style>
+  .project-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 40fr 45fr;
+    grid-gap: 50px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 1440px) {
+  .project-container {
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+  .project-container img {
+    width: 672px;
+    height: 378px;
+    margin-right: 20px;
+    border-radius: 30px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .project-container video {
+    width: 672px;
+    height: 378px;
+    margin-right: 20px;
+    border-radius: 30px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .project-container p {
+    text-align: justify;
+    width: 30%;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #EB6534;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
+
+  nav {
+    background-color: #232020;
+    display: flex;
+    height: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    overflow: hidden;
+    position: fixed;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    color: #E1E6E1;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+  }
+
+  nav a:hover {
+    background-color: #F24236;
+    color: #232020;
+  }
+
+  nav a.active {
+    background-color: #FF6A33;
+    color: #E1E6E1;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  footer {
+    background-color: #232020;
+    color: #E1E6E1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+  }
+
+  footer p {
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+    font-weight: bold;
+
+  }
+
+  h2 {
+    font-size: 28px;
+    margin: 20px 0;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 24px;
+    margin: 20px 0;
+    font-weight: normal;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 10px 0;
+    font-weight: normal;
+  }
+
+  .sample_code {
+    background-color: #282c34;
+    color: #fff;
+    padding: 20px;
+    overflow: auto;
+  }
+
+  .sample_code pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: "Consolas", "Courier New", monospace;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .btn {
+    background-color: #EB6534;
+    color: #232020;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .btn:hover {
+    background-color: #F24236;
+    color: #232020;
+  }
+
+  #content {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			background-color: white;
+			border: 1px solid black;
+			padding: 20px;
+  }
+</style>
+</html>
